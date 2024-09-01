@@ -1,0 +1,46 @@
+{
+  "streams": [
+    {
+      "id": "1",
+      "name": "Channel 1",
+      "url": "https://d25tgymtnqzu8s.cloudfront.net/event/smil:ag1/manifestxplay.mpd",
+      "kid": "237be8ca9383755e9f5784dd23f545eb",
+      "key": "15a723773c3b3cbce295c0aed0bc71c3"
+    },
+    {
+      "id": "2",
+      "name": "Channel 2",
+      "url": "https://d25tgymtnqzu8s.cloudfront.net/event/smil:ag2/manifestxplay.mpd",
+      "kid": "15382879a9bcfa6f1a04a86d5b4324e9",
+      "key": "664241133368ab039dc1fb15206ba54b"
+    },
+    {
+      "id": "3",
+      "name": "Channel 3",
+      "url": "https://d25tgymtnqzu8s.cloudfront.net/event/smil:ag3/manifestxplay.mpd",
+      "kid": "15382879a9bcfa6f1a04a86d5b4324e9",
+      "key": "664241133368ab039dc1fb15206ba54b"
+    },
+    {
+      "id": "4",
+      "name": "Channel 4",
+      "url": "https://d25tgymtnqzu8s.cloudfront.net/event/smil:ag4/manifestxplay.mpd",
+      "kid": "15382879a9bcfa6f1a04a86d5b4324e9",
+      "key": "664241133368ab039dc1fb15206ba54b"
+    },
+    {
+      "id": "5",
+      "name": "Channel 5",
+      "url": "https://d25tgymtnqzu8s.cloudfront.net/event/smil:ag5/manifestxplay.mpd",
+      "kid": "15382879a9bcfa6f1a04a86d5b4324e9",
+      "key": "664241133368ab039dc1fb15206ba54b"
+    },
+    {
+      "id": "6",
+      "name": "Channel 6",
+      "url": "https://d25tgymtnqzu8s.cloudfront.net/event/smil:event1/manifestxplay.mpd",
+      "kid": "15382879a9bcfa6f1a04a86d5b4324e9",
+      "key": "664241133368ab039dc1fb15206ba54b"
+    }
+  ]
+}

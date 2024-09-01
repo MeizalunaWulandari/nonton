@@ -1,0 +1,12 @@
+        /* Custom styles for responsive behavior */
+        @media (max-width: 768px) {
+            #episodes-list {
+                display: none;
+            }
+            #episodes-button {
+                display: block;
+            }
+        }
+        .jw-logo {
+            opacity: 0.5; /* Atur opacity sesuai kebutuhan Anda */
+        }

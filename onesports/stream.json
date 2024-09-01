@@ -1,0 +1,39 @@
+{
+  "streams": [
+    {
+      "id": "1",
+      "name": "One Sports +",
+      "url": "https://qp-pldt-live-grp-03-prod.akamaized.net/out/u/cg_onesportsplus_hd1.mpd",
+      "kid": "0f85589e412b11edb8780242ac120002",
+      "key": "69e8f7927207afe25929d149507386c8"
+    },
+    {
+      "id": "2",
+      "name": "One Sports HD",
+      "url": "https://qp-pldt-live-grp-07-prod.akamaized.net/out/u/cg_onesports_hd.mpd",
+      "kid": "0f855ed4412b11edb8780242ac120002",
+      "key": "b3a22e869d401b9cf556298c3d5d16c6"
+    },
+    {
+      "id": "3",
+      "name": "Channel 3",
+      "url": "https://qp-pldt-live-grp-13-prod.akamaized.net/out/u/dr_popupppvhd.mpd",
+      "kid": "0f873dc6412b11edb8780242ac120002",
+      "key": "7511efa4f5f1f82fe61776ba3b49fc10"
+    },
+    {
+      "id": "4",
+      "name": "Channel 4",
+      "url": "https://qp-pldt-live-grp-05-prod.akamaized.net/out/u/cg_ppv_main_hd.mpd",
+      "kid": "0f873e98412b11edb8780242ac120002",
+      "key": "b84163b3e28660fe2faae7b7bb4b74d9"
+    },
+    {
+      "id": "5",
+      "name": "Channel 5",
+      "url": "https://qp-pldt-live-grp-04-prod.akamaized.net/out/u/ppvsd197.mpd",
+      "kid": "8ad18258a9814d60a67efc6ec9fb3cbd",
+      "key": "7ce6edd4bcf1510583c7739ac8f08e79"
+    }
+  ]
+}
