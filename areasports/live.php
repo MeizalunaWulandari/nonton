@@ -1,6 +1,6 @@
 <?php 
 $id = $_GET['cid'];
-$title = "OneSports";
+$title = "AREA Sports";
 require_once '../templates/header.php';
 ?>
 
