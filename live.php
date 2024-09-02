@@ -49,7 +49,7 @@
             <h2 class="text-xl font-bold mb-4">Episodes</h2>
             <ul class="space-y-2 overflow-y-auto" style="max-height: 70vh;">
                 <li><a href="#" class="block p-2 bg-gray-700 rounded hover:bg-gray-600">Episode 1</a></li>
-                <li><a href="#" class="block p-2 bg-gray-700 rounded hover:bg-gray-600">Episode 2</a></li>
+                <li><a href="#" class="block p-2 rounded hover:bg-gray-600">Episode 2</a></li>
                 <!-- Add more episodes as needed -->
             </ul>
         </div>
