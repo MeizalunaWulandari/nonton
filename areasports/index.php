@@ -104,8 +104,26 @@ $list_channels_json = json_encode($list_channels);
         });
     }
 
+    // Fungsi untuk menghapus semua data dari IndexedDB
+    async function clearDB() {
+        const db = await openDB();
+        const transaction = db.transaction(['channels'], 'readwrite');
+        const objectStore = transaction.objectStore('channels');
+        objectStore.clear();
+
+        return new Promise((resolve, reject) => {
+            transaction.oncomplete = () => {
+                resolve();
+            };
+            transaction.onerror = (event) => {
+                reject(event.target.error);
+            };
+        });
+    }
+
     // Fungsi untuk menyimpan data ke IndexedDB
     async function saveChannels(channels) {
+        await clearDB();  // Hapus data lama
         const db = await openDB();
         const transaction = db.transaction(['channels'], 'readwrite');
         const objectStore = transaction.objectStore('channels');
