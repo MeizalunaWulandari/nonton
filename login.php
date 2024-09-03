@@ -1,19 +1,32 @@
 <?php 
 $title = 'Login';
 require_once 'templates/header.php';
+require_once 'lib/islogin.php';
 ?>
 
 <main class="container mx-auto px-4 mt-10 py-6 flex items-center justify-center ">
     <div class="w-full max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 min-h-[350px] flex flex-col justify-center">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">Login</h2>
-        <?php $error = "Under development" ?>        
-        <div class="text-red-500 text-center" style="height: 24px;"> <!-- Tinggi tetap -->
-            <?php if (isset($error)) { ?>
-                <?php echo $error; ?>
-            <?php } ?>
-        </div>
+        <?php
+            // Ambil parameter dari URL dan sanitasi
+            $message = isset($_GET['message']) ? htmlspecialchars($_GET['message']) : null;
+            $error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
+            ?>
 
-        <form method="POST" action="login.php" class="flex-1 flex flex-col justify-center">
+            <div style="height: 24px;"> <!-- Tinggi tetap -->
+                <?php if ($message): ?>
+                    <div class="text-green-500 text-center">
+                        <?php echo $message; ?>
+                    </div>
+                <?php elseif ($error): ?>
+                    <div class="text-red-500 text-center">
+                        <?php echo $error; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+
+        <form method="POST" action="/lib/login.php" class="flex-1 flex flex-col justify-center">
             <div class="mb-4">
                 <label class="block text-gray-700 dark:text-gray-400 mb-2" for="username">Username:</label>
                 <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" 

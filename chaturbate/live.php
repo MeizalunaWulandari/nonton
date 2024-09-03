@@ -1,52 +1,9 @@
 <?php
-session_start();
+require_once __DIR__ . '/../lib/session.php';
 
-// Username dan password yang benar
-$correct_username = 'coolgate424';
-$correct_password = '1sampai8';
-
-// Inisialisasi percobaan login jika belum ada
-if (!isset($_SESSION['login_attempts'])) {
-    $_SESSION['login_attempts'] = 0;
+if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
+    header("Location: /login.php?message=You+must+login+to+watch"); // Redirect ke index.php
 }
-
-// Batasi hingga 3 kali percobaan login
-$max_attempts = 3;
-
-// Reset login attempts saat halaman di-refresh
-if ($_SESSION['login_attempts'] >= $max_attempts) {
-    // Reset percobaan login agar form login muncul kembali setelah refresh
-    $_SESSION['login_attempts'] = 0;
-    echo "<h1>Upaya login diblokir, hubungi admin untuk membuat akun.</h1><h2>Jika hanya kesalahan silahkan refresh untuk menapilkan form.";
-    exit();
-}
-
-// Cek jika user belum login
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    // Jika login via HTTP Basic Authentication gagal
-    if (
-        !isset($_SERVER['PHP_AUTH_USER']) ||
-        $_SERVER['PHP_AUTH_USER'] !== $correct_username ||
-        $_SERVER['PHP_AUTH_PW'] !== $correct_password
-    ) {
-        // Tambahkan jumlah percobaan login yang salah
-        $_SESSION['login_attempts']++;
-
-        // Tampilkan pop-up login lagi
-        header('WWW-Authenticate: Basic realm="My Project"');
-        header('HTTP/1.0 401 Unauthorized');
-        echo "Unauthorized. You have " . ($max_attempts - $_SESSION['login_attempts']) . " attempt(s) left.";
-        exit();
-    } else {
-        // Reset percobaan login saat berhasil login
-        $_SESSION['login_attempts'] = 0;
-        $_SESSION['logged_in'] = true;
-    }
-}
-
-// Konten setelah login
-// echo "Welcome, you are logged in!";
-
 
 
 // Ambil parameter 'user' dari URL

@@ -1,3 +1,9 @@
+<?php 
+    require_once __DIR__ . '/../lib/session.php';
+    if ($_SERVER['PHP_SELF'] == '/login.php') {
+        $active = '';
+    }
+?>
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -8,6 +14,16 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.css" rel="stylesheet">
     <link href="/style.css" rel="stylesheet">
+
+        <script>
+        // Jika ada pesan, tampilkan alert
+        window.onload = function() {
+            <?php if ($message): ?>
+                alert("<?php echo addslashes($message); ?>");
+            <?php endif; ?>
+        };
+    </script>
+
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 dark:border-gray-800 text-white">
 
@@ -25,13 +41,20 @@
     <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
       <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
         <li>
-          <a href="/" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+          <a href="/" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-red-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
         </li>
         <li>
           <a href="/player.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Video Player</a>
         </li>
         <li>
-          <a href="/login.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <!-- Jika pengguna sudah login, tampilkan link Logout -->
+            <a href="/logout.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
+        <?php else: ?>
+            <!-- Jika pengguna belum login, tampilkan link Login -->
+            <a href="/login.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+        <?php endif ?>
+
         </li>
       </ul>
     </div>
