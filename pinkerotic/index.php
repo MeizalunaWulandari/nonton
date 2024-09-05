@@ -38,19 +38,9 @@
         </div>
 
         <!-- Live Chat Section -->
-        <div class="col-span-12 md:col-span-3 bg-gray-800 p-2 rounded-md">
-            <h2 class="text-xl font-bold mb-4">Live Chat</h2>
-            <div class="h-96 bg-gray-700 rounded-md p-4 overflow-y-auto">
-                <!-- Example Chat Content -->
-                <div class="mb-4">
-                    <p><strong>Admin:</strong> Hi, everyone! The live chat is under development.</p>
-                </div>
-                <!-- More chat messages go here -->
-            </div>
-            <div class="mt-4">
-                <input type="text" class="w-full p-2 bg-gray-600 rounded-md" placeholder="Type your message...">
-            </div>
-        </div>
+        <?php 
+            require_once '../templates/chat.php';
+        ?>
     </div>
 </div>
 
@@ -118,6 +108,7 @@
         episodesList.style.display = 'none';
     }
 </script>
-
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+<script src="/assets/js/chat.js"></script>
 </body>
 </html>

@@ -10,3 +10,13 @@
         .jw-logo {
             opacity: 0.5; /* Atur opacity sesuai kebutuhan Anda */
         }
+
+/* Tambahkan ini di dalam <style> atau file CSS */
+        @media (max-width: 768px) { /* Hanya berlaku untuk perangkat dengan lebar layar kurang dari 768px */
+            #player {
+                position: -webkit-sticky; /* Untuk browser berbasis WebKit seperti Safari */
+                position: sticky;
+                top: 0; /* Jarak dari bagian atas layar */
+                z-index: 10; /* Pastikan video tetap berada di atas konten lainnya */
+            }
+        }

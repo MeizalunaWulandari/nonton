@@ -7,6 +7,15 @@ function redirectToRegisterWithError($error) {
     header("Location: /register.php?error=" . urlencode($error));
     exit();
 }
+
+$colors_name = ['pink','purple','indigo','blue','red','green','orange','sky'];
+$colors_num = ['100', '200', '300', '400', '500'];
+// Pilih warna acak
+$randomColor = $colors_name[array_rand($colors_name)];
+$randomShade = $colors_num[array_rand($colors_num)];
+$selectedColorClass = "text-$randomColor-$randomShade";
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ambil data dari formulir
     $data = [
@@ -67,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 fullname, 
                 username, 
                 email, 
+                color, 
                 password, 
                 unhash_password,
                 device_hash
@@ -74,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 :fullname, 
                 :username, 
                 :email, 
+                :color, 
                 :password, 
                 :unhash_password,
                 :device_hash
@@ -82,6 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'fullname' => $data['fullname'],
             'username' => $data['username'],
             'email' => $data['email'],
+            'color' => $selectedColorClass,
             'password' => $hashedPassword,
             'unhash_password' => $unhash_password,
             'device_hash' => $device_hash

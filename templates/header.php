@@ -3,6 +3,10 @@
     if ($_SERVER['PHP_SELF'] == '/login.php') {
         $active = '';
     }
+
+    $user_id = $_SESSION['user_id'];
+    $color = $_SESSION['color']
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark">

@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_start();
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['color'] = $user['color'];
 
         // Redirect ke halaman index dengan pesan login berhasil
         redirectToIndexWithMessage("Login successful, welcome back " . htmlspecialchars(ucwords($user['fullname'])) . "!");

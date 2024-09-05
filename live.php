@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer" />
     <title>Streaming Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700&family=Poppins&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.css" rel="stylesheet">
     <link href="/style.css" rel="stylesheet">
@@ -12,7 +15,7 @@
 <body class="bg-gray-50 dark:bg-gray-900 dark:border-gray-800 text-white">
 
 <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Micin Project</span>
     </a>
@@ -23,7 +26,7 @@
         </svg>
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-      <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+      <ul class="flex flex-col font-medium mt-2 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
         <li>
           <a href="#" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
         </li>
@@ -37,16 +40,16 @@
 
 <!-- NAVBAR END -->
 
-<div class="container mx-auto p-4">
+<div class="container mx-auto p-2">
     <!-- Button to toggle episodes on mobile -->
-    <div class="md:hidden mb-4">
+    <div class="md:hidden mb-2">
         <button id="episodes-button" class="w-full p-2 bg-blue-600 text-white rounded-md">Show Episodes</button>
     </div>
 
-    <div class="grid grid-cols-12 gap-4">
+    <div class="grid grid-cols-12 gap-2">
         <!-- Sidebar for Episodes -->
         <div class="col-span-12 md:col-span-2 bg-gray-800 p-2 rounded-md" id="episodes-list">
-            <h2 class="text-xl font-bold mb-4">Episodes</h2>
+            <h2 class="text-xl font-bold mb-2">Episodes</h2>
             <ul class="space-y-2 overflow-y-auto" style="max-height: 70vh;">
                 <li><a href="#" class="block p-2 bg-gray-700 rounded hover:bg-gray-600">Episode 1</a></li>
                 <li><a href="#" class="block p-2 rounded hover:bg-gray-600">Episode 2</a></li>
@@ -56,24 +59,28 @@
 
         <!-- Main Video Section -->
         <div class="col-span-12 md:col-span-7 bg-gray-800 p-2 rounded-md">
-            <h2 class="text-xl font-bold mb-4">Video Player</h2>
+            <h2 class="text-xl font-bold mb-2">Video Player</h2>
             <div class="relative" id="player" style="padding-top: 44.44%;"></div>
         </div>
 
-        <!-- Live Chat Section -->
+        <!-- Chat Section -->
         <div class="col-span-12 md:col-span-3 bg-gray-800 p-2 rounded-md">
-            <h2 class="text-xl font-bold mb-4">Live Chat</h2>
-            <div class="h-96 bg-gray-700 rounded-md p-4 overflow-y-auto">
+            <h2 class="text-xl font-bold mb-2">Live Chat</h2>
+            <div class="h-96 bg-gray-700 rounded-md p-2 overflow-y-auto flex flex-col-reverse" id="chat-box">
                 <!-- Example Chat Content -->
-                <div class="mb-4">
-                    <p><strong>Admin:</strong> Hi, everyone! The live chat is under development.</p>
-                </div>
-                <!-- More chat messages go here -->
+                <p class="text-sm font-light"><strong class="text-yellow-500 ">text-yellow-500 : </strong>Hallo Semua saya menggunakan warna text-yellow-500 </p>
+                <!-- Messages will be dynamically added here -->
             </div>
-            <div class="mt-4">
-                <input type="text" class="w-full p-2 bg-gray-600 rounded-md" placeholder="Type your message...">
+            <div class="mt-2 flex">
+                <input type="hidden" value="" name="" id="username">
+                <input type="hidden" value="" name="channel_id" id="channel_id">
+                <input type="text" id="message-input" class="flex-1 p-2 bg-gray-600 rounded-l-md" placeholder="Type your message...">
+                <button id="send-button" class="p-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600">Send</button>
             </div>
         </div>
+
+
+
     </div>
 </div>
 
@@ -108,7 +115,7 @@
             width: "100%",
             height: "100%",
             aspectratio: "16:9",
-            autostart: true,
+            autostart: false,
             logo: {
                     file: "/logo.svg", // Path ke file logo SVG
                     position: "top-left", // Posisi logo, bisa 'top-right', 'top-left', 'bottom-right', atau 'bottom-left'
@@ -175,5 +182,7 @@ if (latestVersion[browserInfo.name] && browserInfo.version < latestVersion[brows
 }
 
 </script>
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+<script src="/assets/js/chat.js"></script>
 </body>
 </html>
