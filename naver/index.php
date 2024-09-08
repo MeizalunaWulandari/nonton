@@ -61,7 +61,7 @@ foreach ($data['result']['templates'][0]['json']['liveBoxList'] as $liveBox):
         if ($liveBox['thumbnailImage'] != NULL) {
             $thumbnailUrl = str_replace('image_1080', 'image_360', $liveBox['thumbnailImage']);
             preg_match('/live\/(\d+)\//', $liveBox['thumbnailImage'], $matches);
-            $liveId = $matches[1] ?? null;
+            $liveId = $matches[1] ?? $liveBox['gameId'];
         } else {
             $thumbnailUrl = "https://sports-phinf.pstatic.net/20201019_37/1603088725798tmep6_PNG/09_etc.png";
             $liveId = $liveBox['gameId'];

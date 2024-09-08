@@ -1,9 +1,5 @@
 <?php
-// Ambil ID dari parameter 'live' di URL
-$liveId = isset($_GET['live']) ? $_GET['live'] : null;
-
-// Pastikan ID tersedia sebelum melanjutkan
-if ($liveId) {
+function fetchLiveData($liveId) {
     // URL untuk permintaan API
     $url = "https://proxy-gateway.sports.naver.com/livecloud/lives/{$liveId}/playback?countryCode=SG&devt=HTML5_PC&timeMachine=false&p2p=false&includeThumbnail=false&pollingStatus=false";
 
@@ -33,27 +29,92 @@ if ($liveId) {
 
     // Cek jika ada error
     if (curl_errno($ch)) {
-        echo 'Error:' . curl_error($ch);
+        curl_close($ch);
+        return ['error' => curl_error($ch)];
     }
 
     // Tutup sesi cURL
     curl_close($ch);
 
     // Dekode hasil JSON
-    $data = json_decode($response, true);
+    return json_decode($response, true);
+}
+
+function getLiveId() {
+    // Ambil ID dari parameter 'live' di URL
+    $live = isset($_GET['live']) ? $_GET['live'] : null;
+
+    // Definisikan pola format yang valid (misalnya hanya angka)
+    $pattern = '/^[0-9]+$/';
+
+    // Cek apakah $live sesuai dengan pola format yang valid
+    if ($live && preg_match($pattern, $live)) {
+        return $live; // Format sesuai, kembalikan nilai $live
+    } else {
+        // URL untuk permintaan API menggunakan ID
+        $url = "https://api-gw.sports.naver.com/schedule/games/{$live}";
+
+        // Inisialisasi cURL
+        $ch = curl_init($url);
+
+        // Set opsi cURL
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'authority: api-gw.sports.naver.com',
+            'accept: application/json, text/plain, */*',
+            'accept-language: en-US,en;q=0.9',
+            'cache-control: no-cache',
+            'origin: https://m.sports.naver.com',
+            'pragma: no-cache',
+            'referer: https://m.sports.naver.com/game/',
+            'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="102", "Google Chrome";v="102"',
+            'sec-ch-ua-mobile: ?0',
+            'sec-ch-ua-platform: "Linux"',
+            'sec-fetch-dest: empty',
+            'sec-fetch-mode: cors',
+            'sec-fetch-site: same-site',
+            'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+        ]);
+
+        // Eksekusi permintaan cURL dan ambil hasilnya
+        $response = curl_exec($ch);
+
+        // Cek jika ada error
+        if (curl_errno($ch)) {
+            curl_close($ch);
+            return 'ID tidak sesuai format'; // Menganggap ID tidak valid jika ada error cURL
+        }
+
+        // Tutup sesi cURL
+        curl_close($ch);
+        $data = json_decode($response, true);
+        $live = $data['result']['game']['liveList'][0]['liveId'];
+        return $live;
+        // Tampilkan hasil cURL untuk debugging
+        // echo '<pre>';
+        // var_dump($data['result']['game']['liveList'][0]['liveId']);
+        // echo '</pre>';
+        // die(); // Berhenti di sini untuk melihat hasil
+    }
+}
+
+$liveId = getLiveId();
+// Pastikan ID tersedia sebelum melanjutkan
+if ($liveId) {
+    $data = fetchLiveData($liveId);
 
     // Tampilkan hasil
     // echo "<pre>";
     // print_r($data['media']);
     // echo "</pre>";
-    // die();
 } else {
     echo "ID live tidak ditemukan di URL.";
 }
-// die();
+
 $title = 'Naver';
 require_once '../templates/header.php';
-?><div class="container mx-auto p-4">
+?>
+<div class="container mx-auto p-4">
     <!-- Button to toggle episodes on mobile -->
     <div class="md:hidden mb-4">
         <button id="episodes-button" class="w-full p-2 bg-blue-600 text-white rounded-md">Show Channels</button>
