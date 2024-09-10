@@ -3,7 +3,7 @@
     require_once 'templates/header.php';
 
  ?>
-	  <main class="container mx-auto px-4 py-6">
+	  <main class="container mx-auto px-4 py-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <a href="naver/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Naver</h5>
