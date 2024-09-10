@@ -1,11 +1,51 @@
 <?php 
+    require_once __DIR__ . '/../lib/config.php';
     require_once __DIR__ . '/../lib/session.php';
     if ($_SERVER['PHP_SELF'] == '/login.php') {
         $active = '';
     }
+    
+    // Fungsi untuk memulai sesi pengguna jika token valid
+    function checkAndStartSessionFromToken() {
+        // Periksa jika sesi sudah ada
+        if (isset($_SESSION['username']) && isset($_SESSION['user_id'])) {
+            return; // Sesi sudah ada, tidak perlu tindakan lebih lanjut
+        }
 
-    $user_id = $_SESSION['user_id'];
-    $color = $_SESSION['color']
+        // Jika sesi tidak ada, periksa token di cookie
+        if (isset($_COOKIE['remember_token'])) {
+            $token = $_COOKIE['remember_token'];
+
+            try {
+                $pdo = getDbConnection();
+
+                // Verifikasi token di database
+                $stmt = $pdo->prepare("SELECT * FROM users WHERE remember_token = :token");
+                $stmt->execute(['token' => $token]);
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($user) {
+                    // Token valid, mulai sesi
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['color'] = $user['color'];
+
+                    $user_id = $_SESSION['user_id'];
+                    $color = $_SESSION['color'];
+                    // Anda dapat mengatur lebih banyak data sesi jika diperlukan
+                }
+
+            } catch (Exception $e) {
+                // Tangani kesalahan koneksi atau query jika perlu
+                error_log("An error occurred: " . $e->getMessage());
+            }
+        }
+    }
+
+    // Panggil fungsi untuk memeriksa dan memulai sesi dari token
+    checkAndStartSessionFromToken();
+
+    // Halaman dapat diteruskan di bawah ini
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +72,7 @@
 <body class="bg-gray-50 dark:bg-gray-900 dark:border-gray-800 text-white">
 
 <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Micin Project</span>
     </a>

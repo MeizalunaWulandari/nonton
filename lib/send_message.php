@@ -11,11 +11,12 @@
 require '../lib/session.php'; // Pastikan file ini menginisialisasi Pusher
 require '../lib/pusher.php'; // Pastikan file ini menginisialisasi Pusher
 require '../lib/config.php'; // Memuat config.php
+require '../lib/ceklogin.php'; // Memuat config.php
 
 
-if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
-    header("Location: /login.php?message=You+must+login+to+send+message"); // Redirect ke index.php
-}
+// if (!isset($_SESSION['username']) || !isset($_SESSION['user_id'])) {
+//     header("Location: /login.php?message=You+must+login+to+send+message"); // Redirect ke index.php
+// }
 
 
 // Ambil data dari request

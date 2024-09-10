@@ -19,6 +19,7 @@ function createTables($pdo) {
         adult TINYINT(1) NOT NULL DEFAULT 0,      -- 0 untuk konten umum, 1 untuk konten dewasa
         email_verified TINYINT(1) NOT NULL DEFAULT 0, -- Status verifikasi email
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        remember_token VARCHAR(64) NULL;
         last_login TIMESTAMP NULL,                -- Kolom untuk waktu login terakhir
         device_hash VARCHAR(64)
     ) ENGINE=INNODB;",

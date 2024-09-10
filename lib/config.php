@@ -1,6 +1,6 @@
 <?php
 
-require_once('loadenv.php');
+require_once __DIR__ . '/loadenv.php';
 
 // Koneksi Database
 function getDbConnection() {
@@ -9,7 +9,7 @@ function getDbConnection() {
     $dbUsername = getenv('DB_USERNAME');
     $dbPassword = getenv('DB_PASSWORD');
     $dbDatabase = getenv('DB_DATABASE');
-    $caPath = getenv('CA_PATH');
+    $caPath = __DIR__ . '/' . getenv('CA_PATH');
 
     try {
         $dsn = "mysql:host=$dbHost;port=$dbPort;dbname=$dbDatabase;charset=utf8mb4";

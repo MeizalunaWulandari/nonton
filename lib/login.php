@@ -48,6 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE id = :id");
         $stmt->execute(['id' => $user['id']]);
 
+        // Generate and store remember token
+        $token = bin2hex(random_bytes(32));
+        $stmt = $pdo->prepare("UPDATE users SET remember_token = :token WHERE id = :id");
+        $stmt->execute(['token' => $token, 'id' => $user['id']]);
+
+        // Set the cookie
+        setcookie('remember_token', $token, time() + 60 * 60 * 24 * 7, '/', '', true, true); // expires in 1 week
+
         // Set session
         session_start();
         $_SESSION['user_id'] = $user['id'];
