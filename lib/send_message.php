@@ -27,10 +27,11 @@ if ($data === null) {
     exit;
 }
 
-$username = isset($data['username']) ? $data['username'] : 'Anonymous';
-$color = $_SESSION['color'];
-$message = isset($data['message']) ? $data['message'] : '';
-$channel = isset($data['channel']) ? $data['channel'] : 'default_channel';
+
+$username = isset($data['username']) ? htmlspecialchars($data['username'], ENT_QUOTES, 'UTF-8') : 'Anonymous';
+$message = isset($data['message']) ? htmlspecialchars($data['message'], ENT_QUOTES, 'UTF-8') : '';
+$channel = isset($data['channel']) ? htmlspecialchars($data['channel'], ENT_QUOTES, 'UTF-8') : 'default_channel';
+$color = htmlspecialchars($_SESSION['color']);
 $user_id = $_SESSION['user_id']; // Gantilah dengan ID pengguna yang sebenarnya dari sesi atau autentikasi
 
 // Validasi pesan
