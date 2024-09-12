@@ -99,21 +99,21 @@
         <li>
           <a href="/player.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Video Player</a>
         </li>
-        <li>
             <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] == 1): ?>
+        <li>
             <!-- Jika pengguna sudah login, tampilkan link Logout -->
             <a href="/addchannel.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Custom Channel</a>
-        <?php endif ?>
         </li>
-        <li>
+        <?php endif ?>
           <?php if (isset($_SESSION['user_id'])): ?>
+        <li>
             <!-- Jika pengguna sudah login, tampilkan link Logout -->
             <a href="/logout.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
         <?php else: ?>
             <!-- Jika pengguna belum login, tampilkan link Login -->
             <a href="/login.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
-        <?php endif ?>
         </li>
+        <?php endif ?>
       </ul>
     </div>
   </div>
