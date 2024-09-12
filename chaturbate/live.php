@@ -66,8 +66,9 @@ $data = json_decode($response, true);
 // echo "<pre>";
 // var_dump($response);
 // die();
-
+    
     $title = ucfirst($_GET['user']) ;
+    $thumb = 'https://thumb.live.mmcdn.com/riw/'. $_GET['user'].'jpg';
     require_once '../templates/header.php';
 
 ?>

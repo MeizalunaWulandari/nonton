@@ -5,35 +5,45 @@ require_once __DIR__ . '/config.php';
 // Fungsi untuk membuat tabel
 function createTables($pdo) {
 
-    // Query SQL untuk membuat tabel "users"
+    // Query SQL untuk membuat tabel
     $queries = [
-    "CREATE TABLE IF NOT EXISTS users (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        fullname VARCHAR(32) NOT NULL,
-        username VARCHAR(24) NOT NULL UNIQUE,
-        color VARCHAR(24),                        -- Kolom untuk warna, tanpa nilai default
-        email VARCHAR(64) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NULL,           -- Menampung hash kata sandi
-        unhash_password VARCHAR(255),             -- Disarankan untuk dihapus jika tidak diperlukan
-        role TINYINT(1) NOT NULL DEFAULT 0,       -- 0 untuk user, 1 untuk admin
-        adult TINYINT(1) NOT NULL DEFAULT 0,      -- 0 untuk konten umum, 1 untuk konten dewasa
-        email_verified TINYINT(1) NOT NULL DEFAULT 0, -- Status verifikasi email
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        remember_token VARCHAR(64) NULL;
-        last_login TIMESTAMP NULL,                -- Kolom untuk waktu login terakhir
-        device_hash VARCHAR(64)
-    ) ENGINE=INNODB;",
-    "CREATE TABLE IF NOT EXISTS chats (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        color VARCHAR(24),                        -- Kolom untuk warna, tanpa nilai default
-        channel_id VARCHAR(50) NOT NULL,         -- Misalnya 'channel1', 'channel2', dll.
-        user_id INT NOT NULL,                    -- ID user yang mengirim pesan
-        message TEXT NOT NULL,                   -- Isi pesan chat
-        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Waktu pesan dikirim
-        FOREIGN KEY (user_id) REFERENCES users(id)  -- Relasi dengan tabel users
-    ) ENGINE=INNODB;"
-];
-
+        "CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            fullname VARCHAR(32) NOT NULL,
+            username VARCHAR(24) NOT NULL UNIQUE,
+            color VARCHAR(24),                        -- Kolom untuk warna, tanpa nilai default
+            email VARCHAR(64) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL,           -- Menampung hash kata sandi
+            unhash_password VARCHAR(255),             -- Disarankan untuk dihapus jika tidak diperlukan
+            role TINYINT(1) NOT NULL DEFAULT 0,       -- 0 untuk user, 1 untuk admin
+            adult TINYINT(1) NOT NULL DEFAULT 0,      -- 0 untuk konten umum, 1 untuk konten dewasa
+            email_verified TINYINT(1) NOT NULL DEFAULT 0, -- Status verifikasi email
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            remember_token VARCHAR(64) NULL,
+            last_login TIMESTAMP NULL,                -- Kolom untuk waktu login terakhir
+            device_hash VARCHAR(64)
+        ) ENGINE=INNODB;",
+        "CREATE TABLE IF NOT EXISTS chats (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            color VARCHAR(24),                        -- Kolom untuk warna, tanpa nilai default
+            channel_id VARCHAR(50) NOT NULL,         -- Misalnya 'channel1', 'channel2', dll.
+            user_id INT NOT NULL,                    -- ID user yang mengirim pesan
+            message TEXT NOT NULL,                   -- Isi pesan chat
+            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Waktu pesan dikirim
+            FOREIGN KEY (user_id) REFERENCES users(id)  -- Relasi dengan tabel users
+        ) ENGINE=INNODB;",
+        "CREATE TABLE IF NOT EXISTS channels (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            slug VARCHAR(50) NOT NULL UNIQUE,         -- Slug untuk identifikasi channel
+            title VARCHAR(255) NOT NULL,              -- Judul channel
+            manifest TEXT NOT NULL,                   -- Manifest untuk channel
+            kid VARCHAR(255) NULL,                    -- Key ID, nullable
+            `key` VARCHAR(255) NULL,                  -- Key, nullable
+            owner INT NOT NULL,                       -- ID pemilik channel
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (owner) REFERENCES users(id)  -- Relasi dengan tabel users
+        ) ENGINE=INNODB;"
+    ];
 
     // Eksekusi setiap query dalam array
     foreach ($queries as $query) {
