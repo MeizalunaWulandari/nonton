@@ -9,13 +9,13 @@
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Naver</h5>
             <p class="font-normal text-gray-700 dark:text-gray-400">Konten dalam bahasa Korea, tidak disertakan penerjemah bawaan</p>
         </a>
+        <a href="volleyballworld/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Volleyball World TV</h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Segera bookmark link event, sewaktu-waktu dapat tidak terindex</p>
+        </a>
         <a href="chaturbate/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Chaturbate</h5>
             <p class="font-normal text-gray-700 dark:text-gray-400">Login untuk menonton</p>
-        </a>
-        <a href="onesports/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">One Sports</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Konten yang ditampilkan mungkin tidak dalam bahasa Inggris.</p>
         </a>
         <a href="kisskh/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Kisskh</h5>
@@ -28,6 +28,10 @@
         <a href="eurosport/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">EUROSPORT</h5>
             <p class="font-normal text-gray-700 dark:text-gray-400">EUROSPORT  is under maintenance.</p>
+        </a>
+        <a href="onesports/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">One Sports</h5>
+            <p class="font-normal text-gray-700 dark:text-red-400">Channel Deprecated.</p>
         </a>
         <!-- Tambahkan lebih banyak card di sini jika diperlukan -->
     </div>

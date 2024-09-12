@@ -58,6 +58,19 @@ $data = json_decode($response, true);
                     <img src="<?= $list['media_group']['0']['media_item']['0']['src'] ?>" alt="<?= $list['title'] ?>" class="w-full h-auto mb-4 rounded-lg">
                     <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-white"><?= $list['title'] ?></h5>
                     <p class="font-normal text-gray-700 dark:text-gray-400">Jadwal: <?= $displayTime; ?></p>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">
+                            Status: 
+                            <?php 
+                            if ($list['type']['value'] == 'liveEvent-now') {
+                                echo 'Sedang Tayang';
+                            } elseif ($list['type']['value'] == 'liveEvent-future') {
+                                echo 'Segera Tayang';
+                            } else {
+                                echo 'Unknown';
+                            }
+                            ?>
+                        </p>
+
                 </a>
 
         <?php endforeach ?>
