@@ -45,7 +45,7 @@ function getLiveId() {
     $live = isset($_GET['live']) ? $_GET['live'] : null;
 
     // Definisikan pola format yang valid (misalnya hanya angka)
-    $pattern = '/^[0-9]+$/';
+    $pattern = '/^[0-9]{7}$/';
 
     // Cek apakah $live sesuai dengan pola format yang valid
     if ($live && preg_match($pattern, $live)) {
