@@ -65,7 +65,7 @@ $data = json_decode($response, true);
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <?php foreach (array_slice($data['serverLoadedFeeds'], $offset) as $list): ?>
             <?php if (!empty($list['feed']) && !empty($list['feed']['entry'])): ?>
-                <a href="/volleyballworld//explore.php?query=<?= htmlspecialchars($list['feed']['id']) ?>" class="<?= $class ?>">
+                <a href="/volleyballworld/explore.php?query=<?= htmlspecialchars($list['feed']['id']) ?>" class="<?= $class ?>">
                     <!-- serverLoadedFeeds[8].feed.entry[0].media_group[0].media_item[0].src -->
                     <?php if ($hasImage == true): ?>
                         <img src="<?= $list['feed']['entry'][0]['media_group'][0]['media_item'][0]['src'] ?>" alt="<?= $list['title'] ?>" class="w-full h-auto mb-4 rounded-lg">
