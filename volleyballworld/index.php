@@ -1,6 +1,17 @@
 <?php
 // URL yang akan diminta
-$url = 'https://tv.volleyballworld.com/?_data=routes%2F_index';
+//$data['metadata'][13]['content']
+// serverLoadedFeeds[4].feed.entry[0].extensions.wscThumbnailUrl
+
+if (isset($_GET['group']) && !empty($_GET['group'])) {
+    $url = "https://tv.volleyballworld.com/competition-groups/".$_GET['group']."?_data=routes%2F%24";
+    $offset = 2;
+    $hashImage = true;
+}else {
+    $url = 'https://tv.volleyballworld.com/?_data=routes%2F_index';
+    $offset = 1;
+    $hashImage = false;
+}
 
 // Inisialisasi cURL
 $ch = curl_init();
@@ -43,19 +54,24 @@ $data = json_decode($response, true);
 // var_dump ($data['serverLoadedFeeds']);
 // die();
 
-    $title = 'Home';
+    $title = $data['metadata'][0]['title'] ?? 'VBTV';
     require_once '../templates/header.php';
 
  ?>
 	  <main class="container mx-auto px-4 py-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <?php foreach (array_slice($data['serverLoadedFeeds'], 1) as $list): ?>
-            <a href="/volleyballworld//explore.php?query=<?= $list['feed']['id'] ?>" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?= $list['feed']['title'] ?></h5>
-                <p class="font-normal text-gray-700 dark:text-gray-400">
-    <?= count(explode(' ', $list['feed']['entry'][0]['extensions']['description'])) > 15 ? implode(' ', array_slice(explode(' ', $list['feed']['entry'][0]['extensions']['description']), 0, 10)) . '...' : $list['feed']['entry'][0]['extensions']['description'] ?></p>
-            </a>
+        <?php foreach (array_slice($data['serverLoadedFeeds'], $offset) as $list): ?>
+            <?php if (!empty($list['feed']) && !empty($list['feed']['entry']) && !empty($list['feed']['entry'][0]['extensions']['description'])): ?>
+                <a href="/volleyballworld//explore.php?query=<?= htmlspecialchars($list['feed']['id']) ?>" class="block w-full p-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <img src="<?= $list['feed']['entry'][0]['media_group'][0]['media_item'][0]['src'] ?>" alt="<?= $list['title'] ?>" class="w-full h-auto mb-4 rounded-lg">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?= htmlspecialchars($list['feed']['title']) ?></h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">
+                        <?= count(explode(' ', $list['feed']['entry'][0]['extensions']['description'])) > 15 ? implode(' ', array_slice(explode(' ', $list['feed']['entry'][0]['extensions']['description']), 0, 10)) . '...' : htmlspecialchars($list['feed']['entry'][0]['extensions']['description']) ?>
+                    </p>
+                </a>
+            <?php endif; ?>
         <?php endforeach ?>
+
         <!-- Tambahkan lebih banyak card di sini jika diperlukan -->
     </div>
 </main>
