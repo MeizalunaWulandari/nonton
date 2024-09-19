@@ -6,11 +6,14 @@
 if (isset($_GET['group']) && !empty($_GET['group'])) {
     $url = "https://tv.volleyballworld.com/competition-groups/".$_GET['group']."?_data=routes%2F%24";
     $offset = 2;
-    $hashImage = true;
+    $hasImage = true;
+    $class = "block w-full p-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700";
+
 }else {
     $url = 'https://tv.volleyballworld.com/?_data=routes%2F_index';
+    $hasImage = false;
     $offset = 1;
-    $hashImage = false;
+    $class = "block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700";
 }
 
 // Inisialisasi cURL
@@ -61,9 +64,12 @@ $data = json_decode($response, true);
 	  <main class="container mx-auto px-4 py-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <?php foreach (array_slice($data['serverLoadedFeeds'], $offset) as $list): ?>
-            <?php if (!empty($list['feed']) && !empty($list['feed']['entry']) && !empty($list['feed']['entry'][0]['extensions']['description'])): ?>
-                <a href="/volleyballworld//explore.php?query=<?= htmlspecialchars($list['feed']['id']) ?>" class="block w-full p-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <img src="<?= $list['feed']['entry'][0]['media_group'][0]['media_item'][0]['src'] ?>" alt="<?= $list['title'] ?>" class="w-full h-auto mb-4 rounded-lg">
+            <?php if (!empty($list['feed']) && !empty($list['feed']['entry'])): ?>
+                <a href="/volleyballworld//explore.php?query=<?= htmlspecialchars($list['feed']['id']) ?>" class="<?= $class ?>">
+                    <!-- serverLoadedFeeds[8].feed.entry[0].media_group[0].media_item[0].src -->
+                    <?php if ($hasImage == true): ?>
+                        <img src="<?= $list['feed']['entry'][0]['media_group'][0]['media_item'][0]['src'] ?>" alt="<?= $list['title'] ?>" class="w-full h-auto mb-4 rounded-lg">
+                    <?php endif ?>
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?= htmlspecialchars($list['feed']['title']) ?></h5>
                     <p class="font-normal text-gray-700 dark:text-gray-400">
                         <?= count(explode(' ', $list['feed']['entry'][0]['extensions']['description'])) > 15 ? implode(' ', array_slice(explode(' ', $list['feed']['entry'][0]['extensions']['description']), 0, 10)) . '...' : htmlspecialchars($list['feed']['entry'][0]['extensions']['description']) ?>
