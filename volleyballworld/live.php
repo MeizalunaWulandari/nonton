@@ -112,6 +112,10 @@ require_once '../templates/header.php';
         }
     </script>
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-<script src="/assets/js/chat.js"></script>
+<?php if (isset($_SESSION['username'])): ?>
+    <script src="/assets/js/chat.js"></script>
+<?php else: ?>
+    <script src="/assets/js/chat-public.js"></script>
+<?php endif ?>
 </body>
 </html>

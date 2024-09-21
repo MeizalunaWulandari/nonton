@@ -68,7 +68,7 @@
             <h2 class="text-xl font-bold mb-2">Live Chat</h2>
             <div class="h-96 bg-gray-700 rounded-md p-2 overflow-y-auto flex flex-col-reverse" id="chat-box">
                 <!-- Example Chat Content -->
-                <p class="text-sm font-light"><strong class="text-yellow-500 ">text-yellow-500 : </strong>Hallo Semua saya menggunakan warna text-yellow-500 </p>
+                <p class="text-sm font-light"><strong class="text-yellow-500 ">Admin : </strong>Login untuk chat</p>
                 <!-- Messages will be dynamically added here -->
             </div>
             <div class="mt-2 flex">
@@ -183,6 +183,10 @@ if (latestVersion[browserInfo.name] && browserInfo.version < latestVersion[brows
 
 </script>
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-<script src="/assets/js/chat.js"></script>
+<?php if (isset($_SESSION['username'])): ?>
+    <script src="/assets/js/chat.js"></script>
+<?php else: ?>
+    <script src="/assets/js/chat-public.js"></script>
+<?php endif ?>
 </body>
 </html>
