@@ -46,6 +46,15 @@
     // Panggil fungsi untuk memeriksa dan memulai sesi dari token
     checkAndStartSessionFromToken();
 
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $domain = $protocol . $_SERVER['HTTP_HOST'];
+
+    // Dapatkan URI saat ini (misalnya /foo/bar atau /bar/abc)
+    $uri = $_SERVER['REQUEST_URI'];
+
+    // Gabungkan untuk menghasilkan URL lengkap
+    $canonical_url = $domain . $uri;
+
     // Halaman dapat diteruskan di bawah ini
 
 ?>
@@ -60,9 +69,9 @@
     <meta property="og:title" content="Micin Project | <?= $title ?>">
     <meta property="og:description" content="MicinProject">
     <meta property="og:image" content="<?= $thumb ?? 'https://stream.micinproject.de/logo.png' ?>">
-    <meta property="og:url" content="https://stream.micinproject.de">
+    <meta property="og:url" content="<?= $canonical_url ?>">
     <meta property="og:type" content="website">
-    <link rel="canonical" href="https://stream.micinproject.de">
+    <link rel="canonical" href="<?= $canonical_url ?>">
     <title>Micin Project | <?= $title ?></title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.css" rel="stylesheet">

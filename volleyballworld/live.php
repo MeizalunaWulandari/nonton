@@ -36,8 +36,8 @@
         echo "Event ID tidak tersedia.";
     }
 
-
-$title = 'VBTV';
+$thumb = $data["entry"][0]["media_group"][0]["media_item"][0]["src"];
+$title = $data["title"];
 require_once '../templates/header.php';
 ?>
 <div class="container mx-auto p-4">
