@@ -70,8 +70,10 @@ foreach ($data['result']['templates'][0]['json']['liveBoxList'] as $liveBox):
         // Determine the broadcast status
         $statusMessage = 'Belum Tayang'; // Default message
         if ($liveBox['statusCode'] === 'STARTED') {
+            $class = 'font-bold text-green-400';
             $statusMessage = 'Sedang Tayang';
         } elseif ($liveBox['statusCode'] === 'BEFORE') {
+            $class = 'text-gray-400';
             $statusMessage = 'Segera Tayang';
         }
         ?>
@@ -81,7 +83,7 @@ foreach ($data['result']['templates'][0]['json']['liveBoxList'] as $liveBox):
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo htmlspecialchars($liveBox['title']); ?></h5>
                     <p class="font-normal text-gray-700 dark:text-gray-400">
                         Jadwal: <?php echo convertKSTtoWIB($liveBox['gameTimeHHmm']); ?> WIB<br>
-                        Status: <span class="status"><?php echo htmlspecialchars($statusMessage); ?></span><br>
+                        Status: <span class="status <?= $class ?>"><?php echo htmlspecialchars($statusMessage); ?></span><br>
                         Kategori: <?= htmlspecialchars(ucfirst($liveBox['superCategoryId'])) ?>
                     </p>
         </a>

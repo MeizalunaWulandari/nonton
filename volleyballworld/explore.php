@@ -82,24 +82,28 @@ require_once '../templates/header.php';
                     <img src="<?= $list['media_group']['0']['media_item']['0']['src'] ?>" alt="<?= $list['title'] ?>" class="w-full h-auto mb-4 rounded-lg">
                     <h5 class="mb-2 font-bold tracking-tight text-gray-900 dark:text-white"><?= $list['title'] ?></h5>
                     <p class="font-normal text-gray-700 dark:text-gray-400">Jadwal: <?= $displayTime; ?></p>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">
-                            Status: 
-                            <?php 
+                    <?php 
                             if ($list['type']['value'] == 'liveEvent-now') {
-                                echo 'Sedang Tayang';
+                                $textStatus = 'Sedang Tayang';
+                                $class = 'font-bold text-green-400';
                             } elseif ($list['type']['value'] == 'liveEvent-future') {
-                                echo 'Segera Tayang';
+                                $textStatus = 'Segera Tayang';
+                                $class = 'text-gray-400';
                             } elseif ($list['type']['value'] == 'liveEvent-vod') {
-                                echo 'Replay';
+                                $textStatus = 'Replay';
+                                $class = 'text-gray-400';
                             } elseif ($list['type']['value'] == 'original_series') {
-                                echo 'Original Documentaries';
+                                $textStatus = 'Original Documentaries';
+                                $class = 'text-gray-400';
                             } elseif ($list['type']['value'] == 'highlight') {
-                                echo 'Highlight';
+                                $textStatus = 'Highlight';
+                                $class = 'text-gray-400';
                             } else {
-                                echo 'Unknown';
+                                $textStatus = 'Unknown';
+                                $class = 'text-gray-400';
                             }
                             ?>
-                        </p>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Status: <span class="<?= $class ?>"><?= $textStatus ?></span></p>
 
                 </a>
 
