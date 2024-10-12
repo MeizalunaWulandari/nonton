@@ -26,7 +26,7 @@
             curl_close($ch);
             $data = json_decode($response, true);
             // echo "<pre>";
-            // var_dump ($data);
+            // var_dump($data);
             // die();
         }
 
@@ -73,23 +73,42 @@ require_once '../templates/header.php';
 <script src="//ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"></script>
 <script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
 <script src="../navbar.js"></script>
-
 <script>
-        // Data dari PHP
-        const streamData = <?php echo json_encode($data['entry'][0]['content']); ?>;
-        console.log(streamData);
+    // Data dari PHP
+    const streamData = <?php echo json_encode($data['entry'][0]['content']); ?>;
+    console.log(streamData);
 
-        // Jika data berhasil diambil, inisialisasi JW Player
-        if (streamData) {
-            const hlsUrl = streamData.src;
+    // Mengambil query parameter dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventParam = urlParams.get('event'); // Mendapatkan nilai dari parameter 'event'
 
+    // Daftar URL HLS
+    const hlsUrls = [
+        streamData.src, // URL utama
+        `https://livecdn.euw1-0005.jwplive.com/live/sites/fM9jRrkn/media/${eventParam}/live.isml/.m3u8` // URL alternatif dengan event
+    ];
+
+    // Fungsi untuk memeriksa URL dan mengembalikan URL yang valid
+    const checkHlsUrls = async (urls) => {
+        for (const url of urls) {
+            const response = await fetch(url, { method: 'HEAD' });
+            if (response.ok) {
+                return url; // Kembalikan URL yang valid
+            }
+        }
+        throw new Error('Semua URL tidak dapat diakses'); // Jika semua URL gagal
+    };
+
+    // Jika data berhasil diambil, inisialisasi JW Player
+    if (streamData) {
+        checkHlsUrls(hlsUrls).then(validUrl => {
             jwplayer("player").setup({
                 playlist: [{
                     title: "Live Stream",
                     sources: [{
                         default: false,
                         type: "hls",
-                        file: hlsUrl
+                        file: validUrl
                     }]
                 }],
                 width: "100%",
@@ -98,19 +117,23 @@ require_once '../templates/header.php';
                 autostart: true,
                 logo: {
                     file: "/logo.svg", // Path ke file logo SVG
-                    position: "top-right", // Posisi logo, bisa 'top-right', 'top-left', 'bottom-right', atau 'bottom-left'
+                    position: "top-right", // Posisi logo
                     hide: false // Logo akan selalu ditampilkan
                 },
                 sharing: {},
                 generateSEOMetadata: true,
-                autostart:"viewable",
+                autostart: "viewable",
                 aboutlink: "https://nonton.micinproject.my.id",
                 abouttext: "Micin Project"
             });
-        } else {
-            console.error('Failed to get HLS URL:', streamData);
-        }
-    </script>
+        }).catch(error => {
+            console.error('Error checking HLS URLs:', error);
+        });
+    } else {
+        console.error('Failed to get HLS URL:', streamData);
+    }
+</script>
+
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 <?php if (isset($_SESSION['username'])): ?>
     <script src="/assets/js/chat.js"></script>
