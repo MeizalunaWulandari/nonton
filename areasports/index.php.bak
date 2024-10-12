@@ -3,7 +3,7 @@ $title = 'AREA Sport';
 require_once '../templates/header.php';
 
 // URL tujuan
-$url = 'https://areasports-cf.coolgate424.workers.dev';
+$url = 'http://localhost:8787/';
 
 // Inisialisasi sesi cURL
 $ch = curl_init($url);
