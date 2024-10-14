@@ -12,7 +12,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
         $url = 'https://zapp-5434-volleyball-tv.web.app/jw/playlists/' . $_GET['query'];
     }
 }else if (isset($_GET['search']) && !empty($_GET['search'])){
-    $url = 'https://zapp-5434-volleyball-tv.web.app/jw/playlists/mfEITzNA?search=' . $_GET['search'];
+    $url = 'https://zapp-5434-volleyball-tv.web.app/jw/playlists/mfEITzNA?search=' . urlencode($_GET['search']);
 }else {
     // Jika tidak ada, redirect ke index.php
     header('Location: index.php');
