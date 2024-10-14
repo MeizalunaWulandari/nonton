@@ -132,7 +132,7 @@ $data = json_decode($response, true);
                 autostart: true,
                 logo: {
                     file: "/logo.svg", // Path ke file logo SVG
-                    position: "top-right", // Posisi logo, bisa 'top-right', 'top-left', 'bottom-right', atau 'bottom-left'
+                    position: "bottom-right", // Posisi logo, bisa 'top-right', 'top-left', 'bottom-right', atau 'bottom-left'
                     hide: false // Logo akan selalu ditampilkan
                 },
                 sharing: {},

@@ -117,7 +117,7 @@ require_once '../templates/header.php';
                 autostart: true,
                 logo: {
                     file: "/logo.svg", // Path ke file logo SVG
-                    position: "top-right", // Posisi logo
+                    position: "bottom-right", // Posisi logo
                     hide: false // Logo akan selalu ditampilkan
                 },
                 sharing: {},

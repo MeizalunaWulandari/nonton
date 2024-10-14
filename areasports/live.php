@@ -123,7 +123,7 @@ function displayChannels(channels) {
             aspectratio: "16:9",
             logo: {
                 file: "/logo.svg", // Path ke file logo SVG
-                position: "top-right", // Posisi logo
+                position: "bottom-right", // Posisi logo
                 hide: false
             },
             sharing: {},
