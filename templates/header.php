@@ -61,11 +61,29 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5JLLB9NJ');</script>
+<!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX6XCCKG55"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CX6XCCKG55');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer" />
     <meta name="keywords" content="MicinProject, Micin Project, micinproject.my.id, bandung.my.id, nonton micinproject, naver, Naver MicinProject">
     <meta name="description" content="MicinProject">
+    <meta name="msvalidate.01" content="01E6B6DCC9058AA87445CDB90E7CCF97" />
     <meta property="og:title" content="Micin Project | <?= $title ?>">
     <meta property="og:description" content="MicinProject">
     <meta property="og:image" content="<?= $thumb ?? 'https://stream.micinproject.de/logo.png' ?>">
@@ -88,6 +106,10 @@
 
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 dark:border-gray-800 text-white">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JLLB9NJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
   <div class="flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
