@@ -83,19 +83,31 @@ require_once '../templates/header.php';
     const eventParam = urlParams.get('event'); // Mendapatkan nilai dari parameter 'event'
 
     // Daftar URL HLS
-    const hlsUrls = [
-        streamData.src, // URL utama
-        `https://livecdn.euw1-0005.jwplive.com/live/sites/fM9jRrkn/media/${eventParam}/live.isml/.m3u8` // URL alternatif dengan event
-    ];
+     if (streamData.src.includes("manifests")) {
+        console.log("manifests detected")
+        hlsUrls =[ 
+            `https://stream.micinproject.de/volleyballworld/proxy.php?url=${encodeURIComponent(streamData.src)}`
+            ];
+    }else {
+        const hlsUrls = [
+            streamData.src, // URL utama
+            `https://livecdn.euw1-0005.jwplive.com/live/sites/fM9jRrkn/media/${eventParam}/live.isml/.m3u8` // URL alternatif dengan event
+        ];
+    }
+
 
     // Fungsi untuk memeriksa URL dan mengembalikan URL yang valid
     const checkHlsUrls = async (urls) => {
         for (const url of urls) {
             const response = await fetch(url, { method: 'HEAD' });
             if (response.ok) {
+                console.log("no geoblock detected")
                 return url; // Kembalikan URL yang valid
-            }
+            } 
         }
+
+     // Cek apakah streamData.src mengandung "manifests"
+        console.log("all errors return default")
         return streamData.src; // Jika semua URL gagal
     };
 
