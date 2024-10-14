@@ -150,7 +150,7 @@ curl_close($ch);
 
 <!-- END SEARCH BAR -->
 <div class="container mx-auto px-4 pt-6 ">
-    <form class="max-w-screen-xl mx-auto relative" action="explore.php">
+    <form class="mx-auto relative" action="explore.php">
         <input type="text" name="search" placeholder="Cari..." class="block w-full px-4 py-2 pr-20 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-blue-600">
         <button type="submit" class="absolute inset-y-0 right-0 flex items-center px-4 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-r-lg">
             Cari
