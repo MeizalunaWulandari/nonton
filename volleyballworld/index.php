@@ -8,7 +8,6 @@ if (isset($_GET['group']) && !empty($_GET['group'])) {
     $offset = 2;
     $hasImage = true;
     $class = "block w-full p-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700";
-
 }else {
     $url = 'https://tv.volleyballworld.com/?_data=routes%2F_index';
     $hasImage = false;
@@ -61,6 +60,16 @@ $data = json_decode($response, true);
     require_once '../templates/header.php';
 
  ?>
+
+ <div class="container mx-auto px-4 pt-4">
+    <form class="mx-auto relative" action="explore.php" method="get">
+        <input type="text" name="search" placeholder="Cari..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="block w-full px-4 py-2 pr-20 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-blue-600">
+        <button type="submit" class="absolute inset-y-0 right-0 flex items-center px-4 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-r-lg">
+            Cari
+        </button>
+    </form>
+</div>
+
 <main class="container mx-auto px-4 py-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <?php foreach (array_slice($data['serverLoadedFeeds'], $offset) as $list): ?>

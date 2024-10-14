@@ -40,6 +40,17 @@ $thumb = $data["entry"][0]["media_group"][0]["media_item"][0]["src"];
 $title = $data["title"];
 require_once '../templates/header.php';
 ?>
+     <!-- SEARCH BAR -->
+<div class="container mx-auto px-4 pt-4">
+    <form class="mx-auto relative" action="explore.php" method="get">
+        <input type="text" name="search" placeholder="Cari..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="block w-full px-4 py-2 pr-20 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-blue-600">
+        <button type="submit" class="absolute inset-y-0 right-0 flex items-center px-4 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-r-lg">
+            Cari
+        </button>
+    </form>
+</div>
+<!-- END SEARCH BAR -->
+
 <div class="container mx-auto p-4">
     <!-- Button to toggle episodes on mobile -->
     <div class="md:hidden mb-4">
@@ -85,11 +96,11 @@ require_once '../templates/header.php';
     // Daftar URL HLS
      if (streamData.src.includes("manifests")) {
         console.log("manifests detected")
-        hlsUrls =[ 
+        hlsUrls = [ 
             `https://stream.micinproject.de/volleyballworld/proxy.php?url=${encodeURIComponent(streamData.src)}`
             ];
     }else {
-        const hlsUrls = [
+        hlsUrls = [
             streamData.src, // URL utama
             `https://livecdn.euw1-0005.jwplive.com/live/sites/fM9jRrkn/media/${eventParam}/live.isml/.m3u8` // URL alternatif dengan event
         ];

@@ -3,21 +3,24 @@ session_start();
 
 
 // Periksa apakah parameter 'query' ada di URL
-if (!isset($_GET['query']) || empty($_GET['query'])) {
+if (isset($_GET['query']) && !empty($_GET['query'])) {
+    $query = $_GET['query'];
+
+    if ($query && isset($_SESSION['feeds'][$query])) {
+        $url = $_SESSION['feeds'][$query]['path'];
+    }else {
+        $url = 'https://zapp-5434-volleyball-tv.web.app/jw/playlists/' . $_GET['query'];
+    }
+}else if (isset($_GET['search']) && !empty($_GET['search'])){
+    $url = 'https://zapp-5434-volleyball-tv.web.app/jw/playlists/mfEITzNA?search=' . $_GET['search'];
+}else {
     // Jika tidak ada, redirect ke index.php
     header('Location: index.php');
     exit; // Hentikan eksekusi skrip setelah redirect
 }
 
-// Ambil nilai parameter 'query'
-$query = $_GET['query'];
-
-if ($query && isset($_SESSION['feeds'][$query])) {
-    $url = $_SESSION['feeds'][$query]['path'];
-} else{
-    $url = 'https://zapp-5434-volleyball-tv.web.app/jw/playlists/' . $query;
-}
-
+// var_dump ($url);
+// die();
 // URL yang ingin diakses, dengan query diambil dari URL
 
 
@@ -37,6 +40,11 @@ curl_close($ch);
 
 // Decode JSON ke array
 $data = json_decode($response, true);
+// if (isset($_GET['query'])) {
+//     $formattedData = json_decode($response, true);
+// }else if (isset($_GET['search'])){
+//     $formattedData = json_decode($response, true);
+// }
 
 // Debugging: menampilkan data yang didapatkan dengan var_dump
 // echo "<pre>";
@@ -48,7 +56,17 @@ $title = $data['title'] ?? 'VBTV';
 require_once '../templates/header.php';
 
 ?>
-     
+     <!-- SEARCH BAR -->
+<div class="container mx-auto px-4 pt-4">
+    <form class="mx-auto relative" action="explore.php" method="get">
+        <input type="text" name="search" placeholder="Cari..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="block w-full px-4 py-2 pr-20 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-blue-600">
+        <button type="submit" class="absolute inset-y-0 right-0 flex items-center px-4 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-r-lg">
+            Cari
+        </button>
+    </form>
+</div>
+<!-- END SEARCH BAR -->
+
     <!-- CARD -->
 	<main class="container mx-auto px-4 py-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
