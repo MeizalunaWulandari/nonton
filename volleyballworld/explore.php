@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 
 // Periksa apakah parameter 'query' ada di URL
 if (!isset($_GET['query']) || empty($_GET['query'])) {
@@ -10,8 +12,14 @@ if (!isset($_GET['query']) || empty($_GET['query'])) {
 // Ambil nilai parameter 'query'
 $query = $_GET['query'];
 
+if ($query && isset($_SESSION['feeds'][$query])) {
+    $url = $_SESSION['feeds'][$query]['path'];
+} else{
+    $url = 'https://zapp-5434-volleyball-tv.web.app/jw/playlists/' . $query;
+}
+
 // URL yang ingin diakses, dengan query diambil dari URL
-$url = 'https://zapp-5434-volleyball-tv.web.app/jw/playlists/' . $query;
+
 
 // Inisialisasi cURL
 $ch = curl_init();

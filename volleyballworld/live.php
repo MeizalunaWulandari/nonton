@@ -96,7 +96,7 @@ require_once '../templates/header.php';
                 return url; // Kembalikan URL yang valid
             }
         }
-        throw new Error('Semua URL tidak dapat diakses'); // Jika semua URL gagal
+        return streamData.src; // Jika semua URL gagal
     };
 
     // Jika data berhasil diambil, inisialisasi JW Player

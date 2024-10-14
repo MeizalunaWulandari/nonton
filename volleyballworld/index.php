@@ -64,7 +64,14 @@ $data = json_decode($response, true);
 <main class="container mx-auto px-4 py-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <?php foreach (array_slice($data['serverLoadedFeeds'], $offset) as $list): ?>
-            <?php if (!empty($list['feed']) && !empty($list['feed']['entry'])): ?>
+            <?php if (!empty($list['feed']) && !empty($list['feed']['entry'])): 
+
+            session_start();
+            $_SESSION['feeds'][$list['feed']['id']] = [
+            'path' => $list['feed']['_feedPath'],
+            ]
+
+            ?>
                 <a href="/volleyballworld/explore.php?query=<?= htmlspecialchars($list['feed']['id']) ?>" class="<?= $class ?>">
                     <!-- serverLoadedFeeds[8].feed.entry[0].media_group[0].media_item[0].src -->
                     <?php if ($hasImage == true): ?>
