@@ -178,8 +178,8 @@ require_once '../templates/header.php';
                 sharing: {},
                 generateSEOMetadata: true,
                 autostart:"viewable",
-                aboutlink: "https://nonton.micinproject.my.id",
-                abouttext: "Micin Project"
+                aboutlink: "https://t.me/+BNTHvuqimcc2ODY1",
+                abouttext: "Join Telegram"
             });
         } else {
             console.error('Failed to get HLS URL:', streamData);

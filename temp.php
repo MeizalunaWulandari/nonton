@@ -43,7 +43,7 @@ require_once 'templates/header.php';
 
         // Jika data berhasil diambil, inisialisasi JW Player
         if (streamData) {
-            const hlsUrl = 'https://restreamer.micinproject.de/memfs/73dbc7e7-1a95-4875-9bbf-ae33a2779752.m3u8';
+            const hlsUrl = 'https://livepeercdn.studio/hls/07d9agzvqoryv2aa/index.m3u8';
 
             jwplayer("player").setup({
                 playlist: [{
@@ -66,8 +66,8 @@ require_once 'templates/header.php';
                 sharing: {},
                 generateSEOMetadata: true,
                 autostart:"viewable",
-                aboutlink: "https://nonton.micinproject.my.id",
-                abouttext: "Micin Project"
+                aboutlink: "https://t.me/+BNTHvuqimcc2ODY1",
+                abouttext: "Join Telegram"
             });
         } else {
             console.error('Failed to get HLS URL:', streamData);
