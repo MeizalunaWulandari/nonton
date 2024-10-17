@@ -43,7 +43,7 @@ require_once 'templates/header.php';
 
         // Jika data berhasil diambil, inisialisasi JW Player
         if (streamData) {
-            const hlsUrl = 'https://livepeercdn.studio/hls/07d9agzvqoryv2aa/index.m3u8';
+            const hlsUrl = 'https://sin-prod-catalyst-2.lp-playback.studio:443/hls/video+07d9agzvqoryv2aa/index.m3u8';
 
             jwplayer("player").setup({
                 playlist: [{

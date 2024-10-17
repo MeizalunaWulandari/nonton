@@ -87,7 +87,7 @@ require_once '../templates/header.php';
 <script>
     // Data dari PHP
     const streamData = <?php echo json_encode($data['entry'][0]['content']); ?>;
-    console.log(streamData);
+    // console.log(streamData);
 
     // Mengambil query parameter dari URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -102,23 +102,24 @@ require_once '../templates/header.php';
     }else {
         hlsUrls = [
             streamData.src, // URL utama
-            `https://livecdn.euw1-0005.jwplive.com/live/sites/fM9jRrkn/media/${eventParam}/live.isml/.m3u8` // URL alternatif dengan event
+            `https://livecdn.euw1-0005.jwplive.com/live/sites/fM9jRrkn/media/${eventParam}/live.isml/.m3u8`, // URL alternatif dengan event
+            `https://livecdn.use1-0004.jwplive.com/live/sites/fM9jRrkn/media/${eventParam}/live.isml/.m3u8` // URL alternatif dengan event
         ];
     }
 
 
     // Fungsi untuk memeriksa URL dan mengembalikan URL yang valid
     const checkHlsUrls = async (urls) => {
-        for (const url of urls) {
-            const response = await fetch(url, { method: 'HEAD' });
-            if (response.ok) {
-                console.log("no geoblock detected")
-                return url; // Kembalikan URL yang valid
-            } 
-        }
+    for (const url of urls) {
+        console.log(`Checking URL: ${url}`); // Tambahkan log ini
+        const response = await fetch(url, { method: 'GET' });
+        if (response.ok) {
+            console.log("no geoblock detected");
+            return url; // Kembalikan URL yang valid
+        } 
+    }
 
-     // Cek apakah streamData.src mengandung "manifests"
-        console.log("all errors return default")
+        console.log("all errors return default");
         return streamData.src; // Jika semua URL gagal
     };
 

@@ -20,7 +20,7 @@
         </a>
         <a href="eurosport/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">EUROSPORT</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">EUROSPORT  is under maintenance.</p>
+            <p class="font-normal text-gray-700 dark:text-gray-400">EUROSPORT is under maintenance.</p>
         </a>
         <a href="areasports/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">AREA Sports</h5>
@@ -28,7 +28,7 @@
         </a>
         <a href="kisskh/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Kisskh</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Kisskh is under development.</p>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Subtitle indonesia tidak selalu tersedia.</p>
         </a>
         <a href="chaturbate/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Chaturbate</h5>
@@ -36,7 +36,7 @@
         </a>
         <a href="onesports/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">One Sports</h5>
-            <p class="font-normal text-gray-700 dark:text-red-400">Channel Deprecated.</p>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Konten dalam bahasa Korea, tidak disertakan penerjemah bawaan</p>
         </a>
         <!-- Tambahkan lebih banyak card di sini jika diperlukan -->
     </div>

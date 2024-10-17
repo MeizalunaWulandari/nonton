@@ -25,3 +25,26 @@ function getDbConnection() {
 
 
 }
+
+function getDb2Connection() {
+    $dbHost = getenv('DB_HOST');
+    $dbPort = getenv('DB_PORT');
+    $dbUsername = getenv('DB_USERNAME2');
+    $dbPassword = getenv('DB_PASSWORD2');
+    $dbDatabase = getenv('DB_DATABASE2');
+    $caPath = __DIR__ . '/' . getenv('CA_PATH');
+
+    try {
+        $dsn = "mysql:host=$dbHost;port=$dbPort;dbname=$dbDatabase;charset=utf8mb4";
+        $options = [
+            PDO::MYSQL_ATTR_SSL_CA => $caPath, // Menambahkan CA Path untuk SSL
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ];
+        $pdo = new PDO($dsn, $dbUsername, $dbPassword, $options);
+        return $pdo;
+    } catch (PDOException $e) {
+        throw new Exception("Database connection failed: " . $e->getMessage());
+    }
+
+
+}
