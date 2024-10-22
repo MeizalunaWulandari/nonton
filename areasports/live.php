@@ -132,6 +132,38 @@ function displayChannels(channels) {
             aboutlink: "https://t.me/+BNTHvuqimcc2ODY1",
             abouttext: "Join Telegram"
         });
+
+            //set logo
+                        // Variabel untuk menyimpan posisi terakhir logo
+            let lastPosition = "jw-logo-bottom-left"; // Atur posisi awal sesuai dengan posisi logo
+
+            // Event listener untuk pemutaran dimulai
+            jwplayer("player").on('play', function() {
+                // Fungsi untuk mengubah posisi logo
+                const changeLogoPosition = () => {
+                    const jwLogo = document.querySelector('.jw-logo'); // Menargetkan elemen logo JW Player
+
+                    if (jwLogo) {
+                        // Hapus semua kelas posisi logo sebelumnya
+                        jwLogo.classList.remove('jw-logo-bottom-left', 'jw-logo-bottom-right', 'jw-logo-top-left', 'jw-logo-top-right');
+
+                        // Pilih posisi baru yang tidak sama dengan posisi terakhir
+                        const positions = ['jw-logo-bottom-left', 'jw-logo-bottom-right', 'jw-logo-top-left', 'jw-logo-top-right'];
+                        let newPosition;
+
+                        do {
+                            newPosition = positions[Math.floor(Math.random() * positions.length)];
+                        } while (newPosition === lastPosition); // Pastikan posisi baru tidak sama dengan posisi terakhir
+
+                        // Tambahkan posisi baru dan perbarui lastPosition
+                        jwLogo.classList.add(newPosition);
+                        lastPosition = newPosition; // Simpan posisi terakhir
+                    }
+                };
+
+                // Ubah posisi logo setiap 30 detik
+                setInterval(changeLogoPosition, 600000); // 30000 ms = 30 detik
+            });
     }
 }
 

@@ -148,15 +148,15 @@ require_once '../templates/header.php';
 <script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
 <script src="../navbar.js"></script>
 
-<script>
+   <script>
         // Data dari PHP
         const streamData = <?php echo json_encode($data['media'][0]); ?>;
-
 
         // Jika data berhasil diambil, inisialisasi JW Player
         if (streamData) {
             const hlsUrl = streamData.path;
 
+            // Inisialisasi JW Player
             jwplayer("player").setup({
                 playlist: [{
                     title: "Live Stream",
@@ -172,15 +172,49 @@ require_once '../templates/header.php';
                 autostart: true,
                 logo: {
                     file: "/logo.svg", // Path ke file logo SVG
-                    position: "bottom-right", // Posisi logo, bisa 'top-right', 'top-left', 'bottom-right', atau 'bottom-left'
+                    position: "bottom-left", // Posisi awal logo
                     hide: false // Logo akan selalu ditampilkan
                 },
                 sharing: {},
                 generateSEOMetadata: true,
-                autostart:"viewable",
+                autostart: "viewable",
                 aboutlink: "https://t.me/+BNTHvuqimcc2ODY1",
                 abouttext: "Join Telegram"
             });
+
+            
+            //set logo
+                        // Variabel untuk menyimpan posisi terakhir logo
+            let lastPosition = "jw-logo-bottom-left"; // Atur posisi awal sesuai dengan posisi logo
+
+            // Event listener untuk pemutaran dimulai
+            jwplayer("player").on('play', function() {
+                // Fungsi untuk mengubah posisi logo
+                const changeLogoPosition = () => {
+                    const jwLogo = document.querySelector('.jw-logo'); // Menargetkan elemen logo JW Player
+
+                    if (jwLogo) {
+                        // Hapus semua kelas posisi logo sebelumnya
+                        jwLogo.classList.remove('jw-logo-bottom-left', 'jw-logo-bottom-right', 'jw-logo-top-left', 'jw-logo-top-right');
+
+                        // Pilih posisi baru yang tidak sama dengan posisi terakhir
+                        const positions = ['jw-logo-bottom-left', 'jw-logo-bottom-right', 'jw-logo-top-left', 'jw-logo-top-right'];
+                        let newPosition;
+
+                        do {
+                            newPosition = positions[Math.floor(Math.random() * positions.length)];
+                        } while (newPosition === lastPosition); // Pastikan posisi baru tidak sama dengan posisi terakhir
+
+                        // Tambahkan posisi baru dan perbarui lastPosition
+                        jwLogo.classList.add(newPosition);
+                        lastPosition = newPosition; // Simpan posisi terakhir
+                    }
+                };
+
+                // Ubah posisi logo setiap 30 detik
+                setInterval(changeLogoPosition, 600000); // 30000 ms = 30 detik
+            });
+
         } else {
             console.error('Failed to get HLS URL:', streamData);
         }

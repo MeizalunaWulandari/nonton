@@ -32,14 +32,14 @@ async function getFingerprint() {
     }).filter(Boolean);
     fingerprint.fonts = detectedFonts.join(',');
 
-    if (window.DeviceOrientationEvent) {
-        await new Promise(resolve => {
-            window.addEventListener('deviceorientation', (event) => {
-                fingerprint.device_orientation = `${event.alpha || 0},${event.beta || 0},${event.gamma || 0}`;
-                resolve();
-            }, { once: true });
-        });
-    }
+    // if (window.DeviceOrientationEvent) {
+    //     await new Promise(resolve => {
+    //         window.addEventListener('deviceorientation', (event) => {
+    //             fingerprint.device_orientation = `${event.alpha || 0},${event.beta || 0},${event.gamma || 0}`;
+    //             resolve();
+    //         }, { once: true });
+    //     });
+    // }
 
     if (navigator.connection) {
         fingerprint.connection_type = navigator.connection.effectiveType;
