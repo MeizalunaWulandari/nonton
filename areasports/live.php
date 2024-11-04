@@ -129,7 +129,7 @@ function displayChannels(channels) {
             sharing: {},
             generateSEOMetadata: true,
             autostart: "viewable",
-            aboutlink: "https://t.me/+BNTHvuqimcc2ODY1",
+            aboutlink: "https://t.me/+2kIytkfXzms4Mjg1",
             abouttext: "Join Telegram"
         });
 

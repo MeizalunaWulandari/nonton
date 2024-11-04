@@ -162,7 +162,6 @@ require_once '../templates/header.php';
                     title: "Live Stream",
                     sources: [{
                         default: false,
-                        type: "hls",
                         file: hlsUrl
                     }]
                 }],
@@ -173,12 +172,13 @@ require_once '../templates/header.php';
                 logo: {
                     file: "/logo.svg", // Path ke file logo SVG
                     position: "bottom-left", // Posisi awal logo
-                    hide: false // Logo akan selalu ditampilkan
+                    hide: false, // Logo akan selalu ditampilkan
+                    margin: 12
                 },
                 sharing: {},
                 generateSEOMetadata: true,
                 autostart: "viewable",
-                aboutlink: "https://t.me/+BNTHvuqimcc2ODY1",
+                aboutlink: "https://t.me/+2kIytkfXzms4Mjg1",
                 abouttext: "Join Telegram"
             });
 

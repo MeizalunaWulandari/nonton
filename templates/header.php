@@ -1,10 +1,10 @@
-<?php 
+<?php
     require_once __DIR__ . '/../lib/config.php';
     require_once __DIR__ . '/../lib/session.php';
     if ($_SERVER['PHP_SELF'] == '/login.php') {
         $active = '';
     }
-    
+
     // Fungsi untuk memulai sesi pengguna jika token valid
     function checkAndStartSessionFromToken() {
         // Periksa jika sesi sudah ada
@@ -105,7 +105,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <?php endif; ?>
         };
     </script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/assets/fingerprint.js" defer></script>
 </head>
@@ -132,6 +132,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </li>
         <li>
           <a href="/player.php" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Video Player</a>
+        </li>
+        <li>
+          <a href="https://t.me/+2kIytkfXzms4Mjg1" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Telegram</a>
         </li>
             <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] == 1): ?>
         <li>

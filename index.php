@@ -5,11 +5,6 @@
  ?>
 	  <main class="container mx-auto px-4 py-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <a href="fifa/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">FIFA</h5>
-            <p class="font-normal text-gray-700 dark:text-gray-400">Gunakan chrome extension "MPD Player"</p>
-            <p class="font-normal text-gray-700 dark:text-red-400">Experimental.</p>
-        </a>
         <a href="naver/index.php" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Naver</h5>
             <p class="font-normal text-gray-700 dark:text-gray-400">Konten dalam bahasa Korea, tidak disertakan penerjemah bawaan</p>
@@ -227,6 +222,20 @@ async function getPermanentDataHash() {
 getPermanentDataHash();
 
     
+</script>
+<script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+
 </script>
 </body>
 </html>

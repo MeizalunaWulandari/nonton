@@ -192,7 +192,7 @@ async function sendDataToBackend() {
                         cancelButtonText: 'Tutup',
                         preConfirm: () => {
                             // Ganti URL di bawah ini dengan link grup Telegram Anda
-                            window.open('https://t.me/+BNTHvuqimcc2ODY1', '_blank');
+                            window.open('https://t.me/+2kIytkfXzms4Mjg1', '_blank');
                         }
                     });
                 }
