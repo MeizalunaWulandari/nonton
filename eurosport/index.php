@@ -49,77 +49,79 @@
 <script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
 
  <script>
-        // Mendapatkan ID dari URL menggunakan PHP
-        const id = <?php echo $id; ?>;
+    // Mendapatkan ID dari URL menggunakan PHP
+    const id = <?php echo $id; ?>;
 
-        // Mengambil data dari stream.json
-        fetch('stream.json')
-            .then(response => response.json())
-            .then(data => {
-                // Memilih stream berdasarkan ID dari URL
-                const selectedStream = data.streams.find(stream => stream.id == id);
+    // Mengambil data dari stream.json
+    fetch('stream.json')
+        .then(response => response.json())
+        .then(data => {
+            // Memilih stream berdasarkan ID dari URL
+            const selectedStream = data.streams.find(stream => stream.id == id);
 
-                // Konfigurasi JWPlayer
-                jwplayer("player").setup({
+            if (selectedStream) {
+                // Konfigurasi dasar JW Player
+                const jwConfig = {
                     playlist: [{
                         file: selectedStream.url,
-                        drm: {
-                            clearkey: {
-                                keyId: selectedStream.kid,
-                                key: selectedStream.key
-                            }
-                        }
                     }],
                     width: "100%",
                     aspectratio: "16:9",
                     logo: {
-                    file: "/logo.svg", // Path ke file logo SVG
-                    position: "bottom-right", // Posisi logo, bisa 'top-right', 'top-left', 'bottom-right', atau 'bottom-left'
-                    hide: false // Logo akan selalu ditampilkan
-                },
-                sharing: {},
-                generateSEOMetadata: true,
-                autostart:"viewable",
-                aboutlink: "https://t.me/+2kIytkfXzms4Mjg1",
-                abouttext: "Join Telegram"
-                });
-
-                
-            //set logo
-                        // Variabel untuk menyimpan posisi terakhir logo
-            let lastPosition = "jw-logo-bottom-left"; // Atur posisi awal sesuai dengan posisi logo
-
-            // Event listener untuk pemutaran dimulai
-            jwplayer("player").on('play', function() {
-                // Fungsi untuk mengubah posisi logo
-                const changeLogoPosition = () => {
-                    const jwLogo = document.querySelector('.jw-logo'); // Menargetkan elemen logo JW Player
-
-                    if (jwLogo) {
-                        // Hapus semua kelas posisi logo sebelumnya
-                        jwLogo.classList.remove('jw-logo-bottom-left', 'jw-logo-bottom-right', 'jw-logo-top-left', 'jw-logo-top-right');
-
-                        // Pilih posisi baru yang tidak sama dengan posisi terakhir
-                        const positions = ['jw-logo-bottom-left', 'jw-logo-bottom-right', 'jw-logo-top-left', 'jw-logo-top-right'];
-                        let newPosition;
-
-                        do {
-                            newPosition = positions[Math.floor(Math.random() * positions.length)];
-                        } while (newPosition === lastPosition); // Pastikan posisi baru tidak sama dengan posisi terakhir
-
-                        // Tambahkan posisi baru dan perbarui lastPosition
-                        jwLogo.classList.add(newPosition);
-                        lastPosition = newPosition; // Simpan posisi terakhir
-                    }
+                        file: "/logo.svg",
+                        position: "bottom-right",
+                        hide: false
+                    },
+                    sharing: {},
+                    generateSEOMetadata: true,
+                    autostart: "viewable",
+                    aboutlink: "https://t.me/+2kIytkfXzms4Mjg1",
+                    abouttext: "Join Telegram"
                 };
 
-                // Ubah posisi logo setiap 30 detik
-                setInterval(changeLogoPosition, 600000); // 30000 ms = 30 detik
-            });
+                // Jika DRM diaktifkan, tambahkan konfigurasi DRM
+                if (selectedStream.drm) {
+                    jwConfig.playlist[0].drm = {
+                        clearkey: {
+                            keyId: selectedStream.kid,
+                            key: selectedStream.key
+                        }
+                    };
+                }
 
-            })
-            .catch(error => console.error('Error fetching the JSON:', error));
-    </script>
+                // Setup JW Player dengan konfigurasi yang disesuaikan
+                jwplayer("player").setup(jwConfig);
+
+                // Set logo
+                let lastPosition = "jw-logo-bottom-left";
+
+                jwplayer("player").on('play', function() {
+                    const changeLogoPosition = () => {
+                        const jwLogo = document.querySelector('.jw-logo');
+                        if (jwLogo) {
+                            jwLogo.classList.remove('jw-logo-bottom-left', 'jw-logo-bottom-right', 'jw-logo-top-left', 'jw-logo-top-right');
+
+                            const positions = ['jw-logo-bottom-left', 'jw-logo-bottom-right', 'jw-logo-top-left', 'jw-logo-top-right'];
+                            let newPosition;
+                            do {
+                                newPosition = positions[Math.floor(Math.random() * positions.length)];
+                            } while (newPosition === lastPosition);
+
+                            jwLogo.classList.add(newPosition);
+                            lastPosition = newPosition;
+                        }
+                    };
+
+                    // Ubah posisi logo setiap 10 menit
+                    setInterval(changeLogoPosition, 600000);
+                });
+            } else {
+                console.error('Stream not found for the given ID.');
+            }
+        })
+        .catch(error => console.error('Error fetching the JSON:', error));
+</script>
+
     <script>
     // Mengambil referensi elemen tombol dan daftar episode
     const episodesButton = document.getElementById('episodes-button');

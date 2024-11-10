@@ -210,3 +210,4 @@ getPermanentDataHash();
 
 // Jalankan fungsi untuk mengirim data
 sendDataToBackend();
+

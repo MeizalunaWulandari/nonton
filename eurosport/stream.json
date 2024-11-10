@@ -4,6 +4,7 @@
       "id": "1",
       "name": "EUROSPORT 1",
       "url": "https://webtvstream.bhtelecom.ba/hls7/eurosport1.mpd",
+      "drm": true,
       "kid": "c18b6aa739be4c0b774605fcfb5d6b68",
       "key": "e41c3a6f7532b2e3a828d9580124c89d"
     },
@@ -11,6 +12,7 @@
       "id": "2",
       "name": "EUROSPORT 2",
       "url": "https://webtvstream.bhtelecom.ba/hls7/eurosport2.mpd",
+      "drm": true,
       "kid": "c18b6aa739be4c0b774605fcfb5d6b68",
       "key": "e41c3a6f7532b2e3a828d9580124c89d"
     },
@@ -18,6 +20,7 @@
       "id": "3",
       "name": "NBC WEST",
       "url": "https://fsly.stream.peacocktv.com/Content/CMAF_OL1-CTR-4s/Live/channel(usa-west)/master.mpd",
+      "drm": true,
       "kid": "252a671825ba31ec8433f978c32ccf6d",
       "key": "ee560759ecc8d2274df2e63fcef56915"
     },
@@ -25,27 +28,27 @@
       "id": "4",
       "name": "UNIVERSO",
       "url": "https://live-oneapp-prd-news.akamaized.net/Content/CMAF_OL1-CTR-4s/Live/channel(universo-east)/master.mpd",
+      "drm": true,
       "kid": "232d71bb013d39ffb92ee8c576fb7e8e",
       "key": "087408a48be8d57046c3868b37ea90ba"
     },
     {
       "id": "5",
       "name": "SPOTV",
-      "url": "https://atemecdnbalancer-voe.sysln.id/live/eds/SPOTVHD/mpd/SPOTVHD.mpd",
-      "kid": "e60ece8f0d9042fcb52508055ec48e5e",
-      "key": "213f438bd4961cda987d41b7f154f1e5"
+      "url": "https://cdn09jtedge.indihometv.com/joss/133/beib1/index.m3u8",
+      "drm": false
     },
     {
       "id": "6",
       "name": "SPOTV2",
-      "url": "https://atemeshield1-voe.sysln.id/live/eds/SPOTV2HD/mpd/SPOTV2HD.mpd",
-      "kid": "e6ed3fdf6e9f491d9ead109fc0b00cfc",
-      "key": "3bc6c45722eb5fa7b343de9bffc4f7c7"
+      "url": "https://cdn09jtedge.indihometv.com/joss/133/beib2/index.m3u8",
+      "drm": false
     },
     {
       "id": "7",
       "name": "TNT Sports 1",
       "url": "https://live.ll.ww.aiv-cdn.net/OTTB/lhr-nitro/live/clients/dash/enc/wf8usag51e/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd",
+      "drm": true,
       "kid": "ae26845bd33038a9c0774a0981007294",
       "key": "63ac662dde310cfb4cc6f9b43b34196d"
     },
@@ -53,6 +56,7 @@
       "id": "8",
       "name": "TNT Sports 2",
       "url": "https://live.ll.ww.aiv-cdn.net/OTTB/lhr-nitro/live/clients/dash/enc/f0qvkrra8j/out/v1/f8fa17f087564f51aa4d5c700be43ec4/cenc.mpd",
+      "drm": true,
       "kid": "6d1708b185c6c4d7b37600520c7cc93c",
       "key": "1aace05f58d8edef9697fd52cb09f441"
     }
