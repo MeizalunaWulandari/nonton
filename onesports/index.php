@@ -81,7 +81,7 @@
                 sharing: {},
                 generateSEOMetadata: true,
                 autostart:"viewable",
-                aboutlink: "https://t.me/+2kIytkfXzms4Mjg1",
+                aboutlink: "https://t.me/+KkUdl1Sr5vU0YTZl",
                 abouttext: "Join Telegram"
             });
         })
