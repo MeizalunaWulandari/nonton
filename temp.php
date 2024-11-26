@@ -43,7 +43,7 @@ require_once 'templates/header.php';
 
         // Jika data berhasil diambil, inisialisasi JW Player
         if (streamData) {
-            const hlsUrl = 'https://sin-prod-catalyst-2.lp-playback.studio:443/hls/video+07d9agzvqoryv2aa/index.m3u8';
+            const hlsUrl = 'https://sin-prod-catalyst-3.lp-playback.studio/hls/video+bc79fsbckt3b7tgp/index.m3u8';
 
             jwplayer("player").setup({
                 playlist: [{
@@ -66,8 +66,8 @@ require_once 'templates/header.php';
                 sharing: {},
                 generateSEOMetadata: true,
                 autostart:"viewable",
-                aboutlink: "https://t.me/+KkUdl1Sr5vU0YTZl",
-                abouttext: "Join Telegram"
+                aboutlink: "https://chat.whatsapp.com/Eyc7E6SWjwyIv78bEesYkX",
+                abouttext: "Join WhatsApp"
             });
         } else {
             console.error('Failed to get HLS URL:', streamData);

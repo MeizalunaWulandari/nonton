@@ -1,7 +1,8 @@
 <?php
 function fetchLiveData($liveId) {
     // URL untuk permintaan API
-    $url = "https://proxy-gateway.sports.naver.com/livecloud/lives/{$liveId}/playback?countryCode=SG&devt=HTML5_PC&timeMachine=false&p2p=false&includeThumbnail=false&pollingStatus=false";
+    $url = "https://proxy-gateway.sports.naver.com/livecloud/lives/{$liveId}/playback?countryCode=SG&devt=HTML5_PC&timeMachine=true&p2p=false&includeThumbnail=false&pollingStatus=false";
+    //https://proxy-gateway.sports.naver.com/livecloud/lives/8886582/playback?countryCode=KR&devt=HTML5_PC&timeMachine=true&p2p=false&includeThumbnail=true&pollingStatus=false
 
     // Inisialisasi cURL
     $ch = curl_init($url);
@@ -146,7 +147,6 @@ require_once '../templates/header.php';
 <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
 <script src="//ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"></script>
 <script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
-<script src="../navbar.js"></script>
 
    <script>
         // Data dari PHP
@@ -178,8 +178,8 @@ require_once '../templates/header.php';
                 sharing: {},
                 generateSEOMetadata: true,
                 autostart: "viewable",
-                aboutlink: "https://t.me/+KkUdl1Sr5vU0YTZl",
-                abouttext: "Join Telegram"
+                aboutlink: "https://chat.whatsapp.com/Eyc7E6SWjwyIv78bEesYkX",
+                abouttext: "Join WhatsApp"
             });
 
             

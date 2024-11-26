@@ -63,7 +63,11 @@ foreach ($data['result']['templates'][0]['json']['liveBoxList'] as $liveBox):
             preg_match('/live\/(\d+)\//', $liveBox['thumbnailImage'], $matches);
             $liveId = $matches[1] ?? $liveBox['gameId'];
         } else {
-            $thumbnailUrl = "https://sports-phinf.pstatic.net/20201019_37/1603088725798tmep6_PNG/09_etc.png";
+            if ($liveBox['superCategoryId'] == "general") {
+                $thumbnailUrl = "https://sports-phinf.pstatic.net/20201019_37/1603088725798tmep6_PNG/09_etc.png";
+            }else{
+                $thumbnailUrl = "https://ssl.pstatic.net/static/sports/common/livecenter/new/bg_live_".$liveBox['superCategoryId'].".jpg";
+            }
             $liveId = $liveBox['gameId'];
         }
 

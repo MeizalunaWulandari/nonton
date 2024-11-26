@@ -75,8 +75,8 @@
                     sharing: {},
                     generateSEOMetadata: true,
                     autostart: "viewable",
-                    aboutlink: "https://t.me/+KkUdl1Sr5vU0YTZl",
-                    abouttext: "Join Telegram"
+                    aboutlink: "https://chat.whatsapp.com/Eyc7E6SWjwyIv78bEesYkX",
+                    abouttext: "Join WhatsApp"
                 };
 
                 // Jika DRM diaktifkan, tambahkan konfigurasi DRM

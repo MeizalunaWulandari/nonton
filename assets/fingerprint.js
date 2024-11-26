@@ -188,11 +188,10 @@ async function sendDataToBackend() {
                         text: 'Terima kasih telah mengunjungi kami.',
                         icon: 'success',
                         showCancelButton: true,
-                        confirmButtonText: 'Join Telegram',
-                        cancelButtonText: 'Tutup',
+                        confirmButtonText: 'Join WhatsApp',
                         preConfirm: () => {
                             // Ganti URL di bawah ini dengan link grup Telegram Anda
-                            window.open('https://t.me/+KkUdl1Sr5vU0YTZl', '_blank');
+                            window.open('https://chat.whatsapp.com/Eyc7E6SWjwyIv78bEesYkX', '_blank');
                         }
                     });
                 }
