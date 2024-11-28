@@ -96,7 +96,7 @@ require_once '../templates/header.php';
      if (streamData.src.includes("manifests")) {
         console.log("manifests detected")
         hlsUrls = [ 
-            `https://stream.micinproject.de/volleyballworld/proxy.php?url=${encodeURIComponent(streamData.src)}`
+            `https://nonton.micinproject.de/volleyballworld/proxy.php?url=${encodeURIComponent(streamData.src)}`
             ];
     }else {
         hlsUrls = [
